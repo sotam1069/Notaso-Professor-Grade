@@ -1,4 +1,4 @@
-# Notaso-Professor-Grade
+# Notaso-Professor-Program
 
 A python webscraping program which allows students of University of Puerto Rico-Mayaguez to:
 1) List all of the Professors of a desired department
