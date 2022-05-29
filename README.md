@@ -1,6 +1,8 @@
 # Notaso-Professor-Grade
 
-A python program to find the grade review (%) of a specific professor in the Computer Science Department at University of Puerto Rico at Mayagüez
+A python webscraping program which allows students of University of Puerto Rico-Mayaguez to:
+1) List all of the Professors of a desired department
+2) Find the grade percentage review of a specific Professor
 
 ## Built With 💻:
 
