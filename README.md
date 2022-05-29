@@ -9,6 +9,11 @@ A python program to find the grade review (%) of a specific professor in the Com
 - Python Requests Module
 
 ## How to Run:
+- Make sure BeautifulSoup4 and Requests are installed in your machine
+```
+pip install beautifulsoup4
+pip install requests
+```
 - Open up terminal, locate folder destination and type:
 ```
 python notaso.py
