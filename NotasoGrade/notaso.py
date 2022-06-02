@@ -1,7 +1,5 @@
 from cgitb import text
 from enum import Enum
-from multiprocessing.sharedctypes import Value
-from turtle import title
 from typing import List
 from bs4 import BeautifulSoup
 import requests
@@ -51,8 +49,8 @@ def ListProfessors():
             Menu()
         else:
             print("\n Thank you for trying out my notaso program! Have a great day :) \n ")
+            quit()
         
-    
     
     picknum = int(input("\n Please choose the number of the professor to show the grade of: "))
 
@@ -64,6 +62,7 @@ def ListProfessors():
             Menu()
         else:
             print("\n Thank you for trying out my notaso program! Have a great day :) \n ")
+            quit()
 
     for key,value in professordict.items():
         if picknum == value:
@@ -74,39 +73,35 @@ def ListProfessors():
 
 def FindGradePercentage(professorinput):
 
-    try:
-        professorinput2 = ''
+    professorinput2 = ''
 
-        for i in range(len(professorinput)):
-            if(professorinput[i] == ' '):
-                professorinput2 = professorinput2 + '-'
-            else:
-                professorinput2 = professorinput2 + professorinput[i]
-
-        professorinput2 = professorinput2.lower()
-
-        proflink = f"https://notaso.com/professors/{professorinput2}/"
-
-        profresult = requests.get(proflink)
-
-        profdoc = BeautifulSoup(profresult.text,"html.parser")
-        percent = profdoc.find('p', attrs={"class" : "professor-percent"})
-        smethods.clear()
-        grade = smethods.determineLetterGrade(percent.text)
-        print("//////////////////////////////////////////////////\n")
-        print(f"   {professorinput}'s grade is:",grade,"-", percent.text)
-        print("///////////////////////////////////////////////// \n")
-        restart = input("Would you like to go back to the menu?: ")
-        restart = restart.lower()
-        if restart == "yes":
-            Menu()
+    for i in range(len(professorinput)):
+        if(professorinput[i] == ' '):
+            professorinput2 = professorinput2 + '-'
         else:
-            print("\n Thank you for trying out my notaso program! Have a great day :) \n ")
+            professorinput2 = professorinput2 + professorinput[i]
 
-    except AttributeError:
-        clear()
-        print("That Professors name is incorrect, please try again")
+    professorinput2 = professorinput2.lower()
+
+    proflink = f"https://notaso.com/professors/{professorinput2}/"
+
+    profresult = requests.get(proflink)
+
+    profdoc = BeautifulSoup(profresult.text,"html.parser")
+    percent = profdoc.find('p', attrs={"class" : "professor-percent"})
+    smethods.clear()
+    grade = smethods.determineLetterGrade(percent.text)
+    print("//////////////////////////////////////////////////\n")
+    print(f"   {professorinput}'s grade is:",grade,"-", percent.text)
+    print("///////////////////////////////////////////////// \n")
+    restart = input("Would you like to go back to the menu?: ")
+    restart = restart.lower()
+    if restart == "yes":
         Menu()
+    else:
+        print("\n Thank you for trying out my notaso program! Have a great day :) \n ")
+        quit()
+    
 
 #Main function
 
